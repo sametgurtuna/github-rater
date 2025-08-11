@@ -1,0 +1,89 @@
+{
+  "site": {
+    "title": "GitHub Profile Analyzer",
+    "description": "Analyze your GitHub profile, get scored, and receive development recommendations. Get detailed analysis across different criteria and evaluate your profile with a comprehensive dashboard."
+  },
+  "search": {
+    "placeholder": "Enter GitHub username (e.g., torvalds)",
+    "button": "Analyze",
+    "analyzing": "Analyzing...",
+    "error": "Please enter a GitHub username"
+  },
+  "features": {
+    "title": "Features",
+    "detailedAnalysis": {
+      "title": "Detailed Analysis",
+      "description": "Comprehensive scoring across activity, contribution, popularity, quality, and diversity criteria."
+    },
+    "smartRecommendations": {
+      "title": "Smart Recommendations",
+      "description": "Personalized recommendations and insights to improve your profile."
+    },
+    "visualDashboard": {
+      "title": "Visual Dashboard",
+      "description": "Rich modern dashboard interface with graphs and metrics."
+    }
+  },
+  "scores": {
+    "overall": "Overall Score",
+    "activity": "Activity",
+    "contribution": "Contribution",
+    "popularity": "Popularity",
+    "quality": "Quality",
+    "diversity": "Diversity",
+    "overallDesc": "Weighted average of all criteria",
+    "activityDesc": "Account age and update frequency",
+    "contributionDesc": "Repository count and fork contributions",
+    "popularityDesc": "Followers and star count",
+    "qualityDesc": "Project documentation and features",
+    "diversityDesc": "Different languages and topics"
+  },
+  "charts": {
+    "programmingLanguages": "Programming Languages",
+    "repositoryActivity": "Repository Activity",
+    "mostPopularProjects": "Most Popular Projects",
+    "detailedStatistics": "Detailed Statistics",
+    "noLanguageInfo": "No language information found yet."
+  },
+  "repositories": {
+    "noRepos": "No repositories found yet.",
+    "fork": "Fork",
+    "archived": "Archived",
+    "lastUpdated": "Last updated",
+    "view": "View",
+    "totalRepos": "Total Repos",
+    "activeRepos": "Active Repos",
+    "activityRate": "Activity Rate",
+    "activityAnalysis": "Activity Analysis",
+    "excellentActivity": "🎉 Excellent activity! You're updating your repositories regularly.",
+    "goodActivity": "👍 Good activity level. You can improve your profile by updating more frequently.",
+    "mediumActivity": "⚠️ Medium activity level. Consider updating your repositories more often.",
+    "lowActivity": "🔴 Low activity level. Revitalize your profile by updating your repositories."
+  },
+  "insights": {
+    "title": "Insights",
+    "noData": "Not enough data yet. Insights will appear as you develop more activity and projects.",
+    "description": "These insights show the strengths of your GitHub profile. You can further strengthen your profile by maintaining and developing these features.",
+    "locked": "Star the project to unlock insights",
+    "lockedDescription": "Star and follow the project on GitHub to see these insights."
+  },
+  "recommendations": {
+    "title": "Development Recommendations",
+    "noRecommendations": "Perfect! No specific recommendations for your profile. Continue to maintain your current performance.",
+    "description": "By following these recommendations, you can improve your GitHub profile and achieve a more professional appearance.",
+    "locked": "Star the project to unlock recommendations",
+    "lockedDescription": "Star and follow the project on GitHub to see these recommendations."
+  },
+  "profile": {
+    "memberSince": "Member since",
+    "followers": "followers",
+    "following": "following",
+    "availableForHire": "Available for hire",
+    "viewOnGitHub": "View on GitHub"
+  },
+  "language": {
+    "switch": "Switch Language",
+    "en": "English",
+    "tr": "Turkish"
+  }
+}

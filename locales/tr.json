@@ -1,0 +1,89 @@
+{
+  "site": {
+    "title": "GitHub Profil Analizör",
+    "description": "GitHub profilinizi analiz edin, puanlayın ve geliştirme önerileri alın. Farklı kriterlerde detaylı analiz ve dashboard ile profilinizi değerlendirin."
+  },
+  "search": {
+    "placeholder": "GitHub kullanıcı adını girin (örn: torvalds)",
+    "button": "Analiz Et",
+    "analyzing": "Analiz Ediliyor...",
+    "error": "Lütfen bir GitHub kullanıcı adı girin"
+  },
+  "features": {
+    "title": "Özellikler",
+    "detailedAnalysis": {
+      "title": "Detaylı Analiz",
+      "description": "Aktivite, katkı, popülerlik, kalite ve çeşitlilik kriterlerinde kapsamlı puanlama."
+    },
+    "smartRecommendations": {
+      "title": "Akıllı Öneriler",
+      "description": "Profilinizi geliştirmek için kişiselleştirilmiş öneriler ve içgörüler."
+    },
+    "visualDashboard": {
+      "title": "Görsel Dashboard",
+      "description": "Grafikler ve metriklerle zenginleştirilmiş modern dashboard arayüzü."
+    }
+  },
+  "scores": {
+    "overall": "Genel Skor",
+    "activity": "Aktivite",
+    "contribution": "Katkı",
+    "popularity": "Popülerlik",
+    "quality": "Kalite",
+    "diversity": "Çeşitlilik",
+    "overallDesc": "Tüm kriterlerin ağırlıklı ortalaması",
+    "activityDesc": "Hesap yaşı ve güncelleme sıklığı",
+    "contributionDesc": "Repo sayısı ve fork katkıları",
+    "popularityDesc": "Takipçi ve star sayısı",
+    "qualityDesc": "Proje dokümantasyonu ve özellikleri",
+    "diversityDesc": "Farklı diller ve konular"
+  },
+  "charts": {
+    "programmingLanguages": "Programlama Dilleri",
+    "repositoryActivity": "Repo Aktivitesi",
+    "mostPopularProjects": "En Popüler Projeler",
+    "detailedStatistics": "Detaylı İstatistikler",
+    "noLanguageInfo": "Henüz dil bilgisi bulunamadı."
+  },
+  "repositories": {
+    "noRepos": "Henüz repository bulunamadı.",
+    "fork": "Fork",
+    "archived": "Arşivlenmiş",
+    "lastUpdated": "Son güncelleme",
+    "view": "Görüntüle",
+    "totalRepos": "Toplam Repo",
+    "activeRepos": "Aktif Repo",
+    "activityRate": "Aktivite Oranı",
+    "activityAnalysis": "Aktivite Analizi",
+    "excellentActivity": "🎉 Mükemmel aktivite! Repolarınızı düzenli olarak güncelliyorsunuz.",
+    "goodActivity": "👍 İyi aktivite seviyesi. Daha sık güncelleme yaparak profilinizi geliştirebilirsiniz.",
+    "mediumActivity": "⚠️ Orta aktivite seviyesi. Repolarınızı daha sık güncellemeyi düşünün.",
+    "lowActivity": "🔴 Düşük aktivite seviyesi. Repolarınızı güncelleyerek profilinizi canlandırın."
+  },
+  "insights": {
+    "title": "İçgörüler",
+    "noData": "Henüz yeterli veri yok. Daha fazla aktivite ve proje geliştirdikçe içgörüler görünecek.",
+    "description": "Bu içgörüler GitHub profilinizin güçlü yanlarını gösteriyor. Bu özellikleri koruyarak ve geliştirerek profilinizi daha da güçlendirebilirsiniz.",
+    "locked": "Projeyi başlatmak için yıldızlayın",
+    "lockedDescription": "Bu içgörüleri görmek için projeyi yıldızlayın ve GitHub'da takip edin."
+  },
+  "recommendations": {
+    "title": "Geliştirme Önerileri",
+    "noRecommendations": "Mükemmel! Profiliniz için özel öneri bulunmuyor. Mevcut performansınızı korumaya devam edin.",
+    "description": "Bu önerileri takip ederek GitHub profilinizi geliştirebilir ve daha profesyonel bir görünüm elde edebilirsiniz.",
+    "locked": "Projeyi başlatmak için yıldızlayın",
+    "lockedDescription": "Bu önerileri görmek için projeyi yıldızlayın ve GitHub'da takip edin."
+  },
+  "profile": {
+    "memberSince": "Üye olma",
+    "followers": "takipçi",
+    "following": "takip",
+    "availableForHire": "İş arayışında",
+    "viewOnGitHub": "GitHub'da Görüntüle"
+  },
+  "language": {
+    "switch": "Dil Değiştir",
+    "en": "İngilizce",
+    "tr": "Türkçe"
+  }
+}
