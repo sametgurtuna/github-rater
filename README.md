@@ -1,15 +1,15 @@
 # 🚀 GitHub Profile Analyzer
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.31-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 > **Advanced GitHub Profile Analysis Platform** - Comprehensive insights, scoring, and AI-powered recommendations for developers to optimize their GitHub presence.
 
 ## 🌐 Live Demo
 
-**[🚀 Try it now!](https://your-live-demo-url.com)** - Experience the full power of GitHub Profile Analyzer with real-time analysis.
+**[🚀 Try it now!](https://githubrater.vercel.app)** - Experience the full power of GitHub Profile Analyzer with real-time analysis.
 
 **Demo Features:**
 - ✅ **Real-time Analysis**: Analyze any GitHub profile instantly
@@ -26,11 +26,13 @@
 - **Multi-dimensional Scoring System**: Activity, Contribution, Popularity, Quality, and Diversity metrics
 - **Real-time Data Processing**: Live GitHub API integration for up-to-date information
 - **Advanced Algorithms**: Sophisticated scoring algorithms based on industry best practices
+- **Rate Limit Management**: Intelligent API request handling with rate limit awareness
 
 ### 📊 **Rich Visual Dashboard**
-- **Interactive Charts**: Programming language distribution and repository activity visualization
+- **Interactive Charts**: Programming language distribution and repository activity visualization using Chart.js
 - **Score Cards**: Color-coded performance indicators with detailed descriptions
 - **Responsive Design**: Optimized for all devices and screen sizes
+- **Smooth Animations**: Framer Motion powered UI transitions and micro-interactions
 
 ### 🎯 **Smart Recommendations Engine**
 - **Personalized Insights**: AI-powered suggestions based on profile analysis
@@ -42,39 +44,23 @@
 - **Localized Content**: Culturally adapted messaging and terminology
 - **Extensible Framework**: Easy to add new languages
 
-### 🔒 **Premium Content System**
-- **Gamified Engagement**: Star the project to unlock advanced insights
-- **Community Building**: Encourages project contribution and collaboration
-- **Value Proposition**: Rewards active community members
-
-## 🎯 Quick Demo
-
-Want to see it in action? **[Try the live demo now!](https://your-live-demo-url.com)**
-
-**What you'll experience:**
-- 🔍 **Instant Analysis**: Enter any GitHub username and get results in seconds
-- 📊 **Rich Visualizations**: Interactive charts and score cards
-- 🌍 **Language Switching**: Toggle between English and Turkish
-- 📱 **Mobile Optimized**: Perfect experience on all devices
-- ⚡ **Real-time Data**: Live GitHub API integration
-
-**Popular profiles to test:**
-- `torvalds` - Linux creator
-- `gaearon` - React creator  
-- `antirez` - Redis creator
-- `vercel` - Next.js creators
-
----
+### 🎨 **Modern UI/UX**
+- **Heroicons Integration**: Beautiful, consistent icon library
+- **Tailwind CSS**: Utility-first CSS framework for rapid development
+- **Framer Motion**: Smooth animations and transitions
+- **Responsive Layout**: Mobile-first design approach
 
 ## 🛠️ Technology Stack
 
 | Technology | Version | Purpose |
 |------------|---------|---------|
 | **Next.js** | 14.2.31 | Full-stack React framework with API routes |
-| **TypeScript** | 5.0 | Type-safe development and better DX |
-| **Tailwind CSS** | 3.3 | Utility-first CSS framework |
-| **Heroicons** | 2.0 | Beautiful, consistent icon library |
-| **Chart.js** | 4.0 | Interactive data visualization |
+| **TypeScript** | 5.6.3 | Type-safe development and better DX |
+| **Tailwind CSS** | 3.4.17 | Utility-first CSS framework |
+| **Heroicons** | 2.1.5 | Beautiful, consistent icon library |
+| **Chart.js** | 4.4.3 | Interactive data visualization |
+| **Framer Motion** | 12.23.12 | Smooth animations and transitions |
+| **Axios** | 1.7.9 | HTTP client for API requests |
 | **GitHub API** | v3 | Real-time GitHub data integration |
 
 ## 🚀 Quick Start
@@ -89,8 +75,8 @@ Want to see it in action? **[Try the live demo now!](https://your-live-demo-url.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/sametgurtuna/github-profile-analyzer.git
-   cd github-profile-analyzer
+   git clone https://github.com/sametgurtuna/github-rater.git
+   cd github-rater
    ```
 
 2. **Install dependencies**
@@ -177,7 +163,7 @@ Want to see it in action? **[Try the live demo now!](https://your-live-demo-url.
 ## 🏗️ Project Structure
 
 ```
-github-profile-analyzer/
+github-rater/
 ├── app/                    # Next.js 13+ app directory
 │   ├── api/               # API routes
 │   │   └── analyze/       # Profile analysis endpoint
@@ -191,7 +177,9 @@ github-profile-analyzer/
 │   ├── ProfileHeader.tsx  # User profile header
 │   ├── RecommendationsPanel.tsx # Improvement suggestions
 │   ├── RepositoriesList.tsx    # Repository listing
-│   └── ScoreCard.tsx      # Individual score display
+│   ├── ScoreCard.tsx      # Individual score display
+│   ├── ProfileAnalyzer.tsx # Main analysis component
+│   └── LanguageSwitcher.tsx # Language toggle
 ├── contexts/               # React contexts
 │   └── LanguageContext.tsx # Internationalization
 ├── locales/                # Translation files
@@ -325,7 +313,7 @@ We welcome contributions! Here's how you can help:
 
 ## 🔒 Security
 
-- **Rate Limiting**: GitHub API request throttling
+- **Rate Limiting**: GitHub API request throttling with intelligent handling
 - **Input Validation**: Sanitized user inputs
 - **CORS Protection**: Configured for production domains
 - **Environment Variables**: Secure credential management
@@ -333,18 +321,19 @@ We welcome contributions! Here's how you can help:
 ## 📈 Roadmap
 
 ### Phase 1 (Current)
-- ✅ Multi-language support
+- ✅ Multi-language support (EN/TR)
 - ✅ Advanced scoring algorithms
-- ✅ Responsive dashboard
-- ✅ GitHub API integration
+- ✅ Responsive dashboard with animations
+- ✅ GitHub API integration with rate limiting
+- ✅ Interactive charts and visualizations
 
-### Phase 2 (Q2 2024)
+### Phase 2 (Q4 2025)
 - 🔄 Team profile analysis
 - 🔄 Historical data tracking
 - 🔄 Export functionality
-- 🔄 Advanced charts
+- 🔄 Advanced charts and metrics
 
-### Phase 3 (Q3 2024)
+### Phase 3 (Q1 2026)
 - 🔄 AI-powered insights
 - 🔄 Integration with other platforms
 - 🔄 Mobile app
@@ -390,27 +379,20 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Tailwind CSS** for the utility-first CSS approach
 - **Chart.js** for beautiful data visualizations
 - **Heroicons** for consistent iconography
+- **Framer Motion** for smooth animations
 
 ## 📞 Support
-
-- **Documentation**: [GitHub Wiki](https://github.com/yourusername/github-profile-analyzer/wiki)
-- **Issues**: [GitHub Issues](https://github.com/yourusername/github-profile-analyzer/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/github-profile-analyzer/discussions)
-- **Email**: support@github-profile-analyzer.com
+- **Email**: samet@gurtuna.dev
 
 ## ⭐ Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/github-profile-analyzer&type=Date)](https://star-history.com/#yourusername/github-profile-analyzer&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=sametgurtuna/github-rater&type=Date)](https://star-history.com/#sametgurtuna/github-rater&Date)
 
 ---
 
 <div align="center">
-
-**Made with ❤️ by the GitHub Profile Analyzer Team**
-
-[![Live Demo](https://img.shields.io/badge/Live_Demo-00C853?style=for-the-badge&logo=vercel&logoColor=white)](https://your-live-demo-url.com)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/sametgurtuna)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/yourusername)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/yourusername)
+[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/o7sabalax)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/sametgurtuna)
 
 </div>

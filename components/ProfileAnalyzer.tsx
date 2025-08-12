@@ -12,10 +12,9 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 interface ProfileAnalyzerProps {
   result: AnalysisResult;
-  isProjectStarred?: boolean;
 }
 
-export default function ProfileAnalyzer({ result, isProjectStarred = false }: ProfileAnalyzerProps) {
+export default function ProfileAnalyzer({ result }: ProfileAnalyzerProps) {
   const { user, repos, score, insights, recommendations } = result;
   const { t } = useLanguage();
 
@@ -65,21 +64,25 @@ export default function ProfileAnalyzer({ result, isProjectStarred = false }: Pr
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-gray-200">{t('charts.programmingLanguages')}</h3>
-          <LanguageChart repos={repos} />
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+        <div className="bg-gray-800/50 p-4 lg:p-6 rounded-xl border border-gray-700 min-w-0">
+          <h3 className="text-lg lg:text-xl font-semibold mb-4 text-gray-200">{t('charts.programmingLanguages')}</h3>
+          <div className="w-full">
+            <LanguageChart repos={repos} />
+          </div>
         </div>
-        <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700">
-          <h3 className="text-xl font-semibold mb-4 text-gray-200">{t('charts.repositoryActivity')}</h3>
-          <ActivityChart repos={repos} />
+        <div className="bg-gray-800/50 p-4 lg:p-6 rounded-xl border border-gray-700 min-w-0">
+          <h3 className="text-lg lg:text-xl font-semibold mb-4 text-gray-200">{t('charts.repositoryActivity')}</h3>
+          <div className="w-full overflow-hidden">
+            <ActivityChart repos={repos} />
+          </div>
         </div>
       </div>
 
       {/* Insights and Recommendations */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <InsightsPanel insights={insights} isProjectStarred={isProjectStarred} />
-        <RecommendationsPanel recommendations={recommendations} isProjectStarred={isProjectStarred} />
+        <InsightsPanel insights={insights} />
+        <RecommendationsPanel recommendations={recommendations} />
       </div>
 
       {/* Repositories List */}

@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 interface ScoreCardProps {
   title: string;
   score: number;
@@ -30,32 +32,111 @@ const getScoreLabel = (score: number) => {
 };
 
 export default function ScoreCard({ title, score, color, description }: ScoreCardProps) {
-  return (
-    <div className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-gray-600 transition-all duration-200">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
-        <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${colorClasses[color]}`} />
-      </div>
-      
-      <div className="text-center mb-4">
-        <div className={`text-4xl font-bold ${getScoreColor(score)} mb-2`}>
-          {score}
-        </div>
-        <div className="text-sm text-gray-400 font-medium">
-          {getScoreLabel(score)}
-        </div>
-      </div>
+  // Animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut" as const
+      }
+    }
+  };
 
-      <div className="w-full bg-gray-700 rounded-full h-2 mb-4">
-        <div
+  const scoreVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        delay: 0.2,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const progressVariants = {
+    hidden: { width: 0 },
+    visible: {
+      width: `${score}%`,
+      transition: {
+        duration: 1.2,
+        delay: 0.4,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  return (
+    <motion.div 
+      className="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-gray-600 transition-all duration-200 dark-scrollbar"
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover={{ 
+        y: -8, 
+        scale: 1.02,
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)"
+      }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <motion.div 
+        className="flex items-center justify-between mb-4"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <h3 className="text-lg font-semibold text-gray-200">{title}</h3>
+        <motion.div 
+          className={`w-3 h-3 rounded-full bg-gradient-to-r ${colorClasses[color]}`}
+          whileHover={{ scale: 1.5, rotate: 360 }}
+          transition={{ duration: 0.6 }}
+        />
+      </motion.div>
+      
+      <motion.div 
+        className="text-center mb-4"
+        variants={scoreVariants}
+      >
+        <motion.div 
+          className={`text-4xl font-bold ${getScoreColor(score)} mb-2`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          {score}
+        </motion.div>
+        <motion.div 
+          className="text-sm text-gray-400 font-medium"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
+          {getScoreLabel(score)}
+        </motion.div>
+      </motion.div>
+
+      <div className="w-full bg-gray-700 rounded-full h-2 mb-4 overflow-hidden">
+        <motion.div
           className={`h-2 bg-gradient-to-r ${colorClasses[color]} rounded-full transition-all duration-500`}
-          style={{ width: `${score}%` }}
+          variants={progressVariants}
+          initial="hidden"
+          animate="visible"
         />
       </div>
 
-      <p className="text-sm text-gray-400 text-center leading-relaxed">
+      <motion.p 
+        className="text-sm text-gray-400 text-center leading-relaxed"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.6 }}
+      >
         {description}
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 }

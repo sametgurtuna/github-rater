@@ -3,6 +3,7 @@
 import { GitHubRepo } from '../types/github';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -52,6 +53,14 @@ export default function ActivityChart({ repos }: ActivityChartProps) {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 10,
+        bottom: 10,
+        left: 10,
+        right: 10
+      }
+    },
     plugins: {
       legend: {
         display: false,
@@ -77,8 +86,10 @@ export default function ActivityChart({ repos }: ActivityChartProps) {
         ticks: {
           color: '#9CA3AF',
           font: {
-            size: 11,
+            size: 10,
           },
+          maxRotation: 45,
+          minRotation: 0,
         },
       },
       y: {
@@ -89,7 +100,7 @@ export default function ActivityChart({ repos }: ActivityChartProps) {
         ticks: {
           color: '#9CA3AF',
           font: {
-            size: 11,
+            size: 10,
           },
           callback: function(value: any) {
             return Math.floor(value);
@@ -109,43 +120,210 @@ export default function ActivityChart({ repos }: ActivityChartProps) {
 
   const averageUpdateFrequency = totalRepos > 0 ? Math.round(activeRepos / totalRepos * 100) : 0;
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const chartVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const statsVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const statItemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut" as const
+      }
+    }
+  };
+
+  const analysisVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.3
+      }
+    }
+  };
+
   return (
-    <div>
-      <div className="h-80 mb-6">
+    <motion.div 
+      className="w-full overflow-hidden"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div 
+        className="h-48 w-full"
+        variants={chartVariants}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
+      >
         <Bar data={chartData} options={options} />
-      </div>
+      </motion.div>
       
       {/* Activity statistics */}
-      <div className="grid grid-cols-3 gap-4">
-        <div className="text-center p-3 bg-gray-700/30 rounded-lg">
-          <div className="text-2xl font-bold text-blue-400">{totalRepos}</div>
-          <div className="text-sm text-gray-400">{t('repositories.totalRepos')}</div>
-        </div>
-        <div className="text-center p-3 bg-gray-700/30 rounded-lg">
-          <div className="text-2xl font-bold text-green-400">{activeRepos}</div>
-          <div className="text-sm text-gray-400">{t('repositories.activeRepos')}</div>
-        </div>
-        <div className="text-center p-3 bg-gray-700/30 rounded-lg">
-          <div className="text-2xl font-bold text-purple-400">{averageUpdateFrequency}%</div>
-          <div className="text-sm text-gray-400">{t('repositories.activityRate')}</div>
-        </div>
-      </div>
+      <motion.div 
+        className="grid grid-cols-3 gap-3 mt-4 custom-scrollbar"
+        variants={statsVariants}
+      >
+        <motion.div 
+          className="text-center p-2 lg:p-3 bg-gray-700/30 rounded-lg"
+          variants={statItemVariants}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -5,
+            backgroundColor: 'rgba(75, 85, 99, 0.4)'
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <motion.div 
+            className="text-lg lg:text-2xl font-bold text-blue-400"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {totalRepos}
+          </motion.div>
+          <div className="text-xs lg:text-sm text-gray-400">{t('repositories.totalRepos')}</div>
+        </motion.div>
+        <motion.div 
+          className="text-center p-2 lg:p-3 bg-gray-700/30 rounded-lg"
+          variants={statItemVariants}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -5,
+            backgroundColor: 'rgba(75, 85, 99, 0.4)'
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <motion.div 
+            className="text-lg lg:text-2xl font-bold text-green-400"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {activeRepos}
+          </motion.div>
+          <div className="text-xs lg:text-sm text-gray-400">{t('repositories.activeRepos')}</div>
+        </motion.div>
+        <motion.div 
+          className="text-center p-2 lg:p-3 bg-gray-700/30 rounded-lg"
+          variants={statItemVariants}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -5,
+            backgroundColor: 'rgba(75, 85, 99, 0.4)'
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <motion.div 
+            className="text-lg lg:text-2xl font-bold text-purple-400"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {averageUpdateFrequency}%
+          </motion.div>
+          <div className="text-xs lg:text-sm text-gray-400">{t('repositories.activityRate')}</div>
+        </motion.div>
+      </motion.div>
 
       {/* Activity analysis */}
-      <div className="mt-4 p-3 bg-gray-700/30 rounded-lg">
-        <h4 className="text-sm font-medium text-gray-300 mb-2">{t('repositories.activityAnalysis')}</h4>
-        <div className="text-xs text-gray-400 space-y-1">
+      <motion.div 
+        className="mt-4 p-3 bg-gray-700/30 rounded-lg"
+        variants={analysisVariants}
+        whileHover={{ 
+          scale: 1.02,
+          backgroundColor: 'rgba(75, 85, 99, 0.4)'
+        }}
+        transition={{ duration: 0.3 }}
+      >
+        <motion.h4 
+          className="text-sm font-medium text-gray-300 mb-2"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          {t('repositories.activityAnalysis')}
+        </motion.h4>
+        <motion.div 
+          className="text-xs text-gray-400 space-y-1"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+        >
           {averageUpdateFrequency >= 70 ? (
-            <p>{t('repositories.excellentActivity')}</p>
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+            >
+              {t('repositories.excellentActivity')}
+            </motion.p>
           ) : averageUpdateFrequency >= 50 ? (
-            <p>{t('repositories.goodActivity')}</p>
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+            >
+              {t('repositories.goodActivity')}
+            </motion.p>
           ) : averageUpdateFrequency >= 30 ? (
-            <p>{t('repositories.mediumActivity')}</p>
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+            >
+              {t('repositories.mediumActivity')}
+            </motion.p>
           ) : (
-            <p>{t('repositories.lowActivity')}</p>
+            <motion.p
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+            >
+              {t('repositories.lowActivity')}
+            </motion.p>
           )}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }

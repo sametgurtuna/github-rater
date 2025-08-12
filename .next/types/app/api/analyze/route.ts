@@ -1,4 +1,4 @@
-// File: C:\Users\samet\Desktop\adsasd\app\api\analyze\route.ts
+// File: C:\Users\samet\Desktop\github-rater\app\api\analyze\route.ts
 import * as entry from '../../../../../app/api/analyze/route.js'
 import type { NextRequest } from 'next/server.js'
 
