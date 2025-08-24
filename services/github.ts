@@ -94,9 +94,9 @@ export class GitHubService {
     const forkedRepos = repos.filter(r => r.fork);
     
     const contributionScore = Math.min(100, Math.max(0,
-      (originalRepos.length * 4) + // Original repos (max 40 points)
-      (totalForks * 1.5) + // Fork impact (max 30 points)
-      (totalWatchers * 0.8) + // Watcher engagement (max 20 points)
+      (Math.min(originalRepos.length * 4, 40)) + // Original repos (max 40 points)
+      (Math.min(totalForks * 1.5, 30) + // Fork impact (max 30 points)
+      (Math.min(totalWatchers * 0.8, 20)) + // Watcher engagement (max 20 points)
       (user.public_gists * 0.5) + // Gists contribution
       (forkedRepos.length * 0.3) // Fork participation
     ));
@@ -122,12 +122,12 @@ export class GitHubService {
     const reposWithDiscussions = repos.filter(r => r.has_discussions);
     
     const qualityScore = Math.min(100, Math.max(0,
-      (reposWithDescription.length * 3) + // Good descriptions (max 30 points)
-      (reposWithWiki.length * 2) + // Wikis (max 20 points)
-      (reposWithPages.length * 3) + // GitHub Pages (max 20 points)
-      (reposWithLicense.length * 4) + // Licenses (max 20 points)
-      (reposWithIssues.length * 1) + // Issue tracking (max 10 points)
-      (reposWithDiscussions.length * 2) // Discussions (max 10 points)
+      (Math.min(reposWithDescription.length * 3, 30)) + // Good descriptions (max 30 points)
+      (Math.min(reposWithWiki.length * 2, 20) + // Wikis (max 20 points)
+      (Math.min(reposWithPages.length * 3, 20) + // GitHub Pages (max 20 points)
+      (Math.min(reposWithLicense.length * 4, 20)) + // Licenses (max 20 points)
+      (Math.min(reposWithIssues.length * 1)) + // Issue tracking (max 10 points)
+      (Math.min(reposWithDiscussions.length * 2)) // Discussions (max 10 points)
     ));
 
     // Enhanced Diversity Score (Languages, topics, project types)
