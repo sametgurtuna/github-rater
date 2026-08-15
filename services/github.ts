@@ -95,7 +95,7 @@ export class GitHubService {
     
     const contributionScore = Math.min(100, Math.max(0,
       (Math.min(originalRepos.length * 4, 40)) + // Original repos (max 40 points)
-      (Math.min(totalForks * 1.5, 30) + // Fork impact (max 30 points)
+      (Math.min(totalForks * 1.5, 30)) + // Fork impact (max 30 points)
       (Math.min(totalWatchers * 0.8, 20)) + // Watcher engagement (max 20 points)
       (user.public_gists * 0.5) + // Gists contribution
       (forkedRepos.length * 0.3) // Fork participation
@@ -123,8 +123,8 @@ export class GitHubService {
     
     const qualityScore = Math.min(100, Math.max(0,
       (Math.min(reposWithDescription.length * 3, 30)) + // Good descriptions (max 30 points)
-      (Math.min(reposWithWiki.length * 2, 20) + // Wikis (max 20 points)
-      (Math.min(reposWithPages.length * 3, 20) + // GitHub Pages (max 20 points)
+      (Math.min(reposWithWiki.length * 2, 20)) + // Wikis (max 20 points)
+      (Math.min(reposWithPages.length * 3, 20)) + // GitHub Pages (max 20 points)
       (Math.min(reposWithLicense.length * 4, 20)) + // Licenses (max 20 points)
       (Math.min(reposWithIssues.length * 1)) + // Issue tracking (max 10 points)
       (Math.min(reposWithDiscussions.length * 2)) // Discussions (max 10 points)
